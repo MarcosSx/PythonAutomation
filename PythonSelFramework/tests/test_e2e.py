@@ -26,7 +26,7 @@ class TestOne(BaseClass):
 
         confirm_page.getBtnCheckout().click()
         confirm_page.getLblCountry().send_keys(get_data['search'])
-        self.verifyLinkPresence('country')
+        self.verifyLinkPresence(get_data['country'])
         confirm_page.getOptCountry().click()
         confirm_page.getCbkIAgree().click()
         confirm_page.getBtnPurchase().click()
