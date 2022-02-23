@@ -1,3 +1,6 @@
+import inspect
+import logging
+
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -15,3 +18,14 @@ class BaseClass:
     def selectOptionByText(self, locator, text):
         sel = Select(locator)
         sel.select_by_visible_text(text)
+
+    def getLogger(self):
+        logger_name = inspect.stack()[1][3]
+        logger = logging.getLogger(logger_name)
+        file_handler = logging.FileHandler('logfile.log')
+        formatter = logging.Formatter('%(asctime)s |%(levelname)s |%(name)s |%(message)s')
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+        logger.setLevel(logging.DEBUG)
+        return logger
+
