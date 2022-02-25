@@ -10,8 +10,8 @@ class TestHomePage(BaseClass):
     def test_formSubmission(self, get_data):
         log = self.getLogger()
         home_page = HomePage(self.driver)
-        home_page.getLblName().send_keys(get_data['firstName'])
-        log.info(f'Name filled in the form: [{get_data["firstName"]}]')
+        home_page.getLblName().send_keys(get_data['firstname'])
+        log.info(f'Name filled in the form: [{get_data["firstname"]}]')
         home_page.getLblEmail().send_keys(get_data['email'])
         log.info(f'Email filled in the form: [{get_data["email"]}]')
         home_page.getCheckbox().click()
@@ -21,6 +21,6 @@ class TestHomePage(BaseClass):
         assert 'Success!' in alert_text
         self.driver.refresh()
 
-    @pytest.fixture(params=HomePageData.test_HomePageData)
+    @pytest.fixture(params=HomePageData.getTestData('TestCase1'))
     def get_data(self, request):
         return request.param
