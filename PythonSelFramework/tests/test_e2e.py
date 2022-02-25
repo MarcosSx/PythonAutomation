@@ -35,8 +35,8 @@ class TestOne(BaseClass):
         confirm_page.getBtnPurchase().click()
         success = confirm_page.getLblSuccess().text
         log.info(f'Text received from application is [{success}]')
-        assert "Successs" in success
+        assert "Success" in success
 
-    @pytest.fixture(params=TestE2EData.test_e2e_data)
+    @pytest.fixture(params=TestE2EData.getTestData('TestCase3'))
     def get_data(self, request):
         return request.param
